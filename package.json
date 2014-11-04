@@ -1,5 +1,5 @@
 {
-  "name": "structure",
+  "name": "structure-grid",
   "version": "0.0.1",
   "description": "Declarative grid framework",
   "main": "structure.css",
