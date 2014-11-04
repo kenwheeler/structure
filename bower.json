@@ -1,0 +1,25 @@
+{
+  "name": "structure",
+  "version": "0.0.1",
+  "authors": [
+    "Ken Wheeler <ken.wheeler@mediahive.com>"
+  ],
+  "description": "Declarative grid framework",
+  "main": "structure.css",
+  "keywords": [
+    "css",
+    "grid",
+    "declarative",
+    "sass"
+  ],
+  "license": "MIT",
+  "homepage": "kenwheeler.github.io/structure",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}

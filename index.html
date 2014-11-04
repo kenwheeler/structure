@@ -1,0 +1,75 @@
+<html>
+<head>
+  <title>STRUCTURE - A declarative grid framework</title>
+  <link rel="stylesheet" type="text/css" href="structure.min.css">
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+    .container {
+      width: 100%;
+      margin: auto;
+      padding: 1.5em 2em;
+      box-sizing: border-box;
+    }
+    .box {
+      min-height: 20px;
+      background: #3498db;
+      margin: .5em 0;
+    }
+
+    [str-row] div:last-child .box {
+      background: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div str-row>
+      <div str-xs="1"><p class="box"></p></div>
+      <div str-xs="11"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="2"><p class="box"></p></div>
+      <div str-xs="10"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="3"><p class="box"></p></div>
+      <div str-xs="9"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="4"><p class="box"></p></div>
+      <div str-xs="8"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="5"><p class="box"></p></div>
+      <div str-xs="7"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="6"><p class="box"></p></div>
+      <div str-xs="6"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="7"><p class="box"></p></div>
+      <div str-xs="5"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="8"><p class="box"></p></div>
+      <div str-xs="4"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="9"><p class="box"></p></div>
+      <div str-xs="3"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="10"><p class="box"></p></div>
+      <div str-xs="2"><p class="box"></p></div>
+    </div>
+    <div str-row>
+      <div str-xs="11"><p class="box"></p></div>
+      <div str-xs="1"><p class="box"></p></div>
+    </div>
+  </div>
+</body>
+</html>

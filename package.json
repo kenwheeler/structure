@@ -1,0 +1,17 @@
+{
+  "name": "structure",
+  "version": "0.0.1",
+  "description": "Declarative grid framework",
+  "main": "structure.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "grid",
+    "css",
+    "structure",
+    "declarative"
+  ],
+  "author": "Ken Wheeler",
+  "license": "MIT"
+}

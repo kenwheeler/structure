@@ -1,0 +1,108 @@
+$settings: (
+    columns: 12,
+    margin: 0.5rem,
+    breakpoints: (
+        sm: "only screen and (min-width : 48em)",
+        md: "only screen and (min-width : 62em)",
+        lg: "only screen and (min-width : 65em)"
+    )   
+);
+
+@mixin renderGridStyles($settings){  
+  [str-row] {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: map-get($settings, "margin") * -1;
+    margin-left: map-get($settings, "margin") * -1;
+  }
+  $breakpoints: map-get($settings, "breakpoints");
+  @include renderCommon("xs", $settings);
+  @include renderColumns("xs", $settings);
+  @include renderOffsets("xs", $settings);
+  @each $key, $breakpoint in $breakpoints {
+    @include media($breakpoint) {
+      @include renderCommon($key, $settings);
+      @include renderColumns($key, $settings);
+      @include renderOffsets($key, $settings);
+    }
+  }
+}
+
+@mixin renderCommon($key, $settings) {
+  $i: 1;
+  $end: map-get($settings, "columns") - 1;
+  $list: ();
+  @while $i <= map-get($settings, "columns") {
+    $list: append(
+      $list, 
+      unquote("[str-#{$key}='#{$i}']"),
+      comma
+    );
+    $i: $i+1;
+  }
+  #{$list} {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding-right: map-get($settings, "margin");
+    padding-left: map-get($settings, "margin");
+  }
+}
+
+@mixin renderColumns($key, $settings) {
+  $i: 1;
+  @while $i <= map-get($settings, "columns") {
+    [str-#{$key}='#{$i}'] {
+      -webkit-flex-basis: 100% * $i / map-get($settings,"columns");
+      -ms-flex-preferred-size: 100% * $i / map-get($settings,"columns");
+      flex-basis: 100% * $i / map-get($settings,"columns");
+      max-width: 100% * $i / map-get($settings,"columns");
+    }
+    $i: $i+1;
+  }
+}
+
+@mixin renderOffsets($key, $settings) {
+  $i: 1;
+  @while $i < map-get($settings, "columns") {
+    [str-#{$key}-offset='#{$i}'] {
+      margin-left: 100% * $i / map-get($settings,"columns");
+    }
+    $i: $i+1;
+  }
+}
+
+@mixin media($queryString){
+    @media #{$queryString} {
+      @content;
+    }
+}
+
+@include renderGridStyles($settings);
