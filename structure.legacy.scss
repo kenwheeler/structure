@@ -1,0 +1,54 @@
+$settings: (
+    columns: 12,
+    margin: 0.5em,
+    breakpoints: (
+        sm: "only screen and (min-width : 48em)",
+        md: "only screen and (min-width : 62em)",
+        lg: "only screen and (min-width : 65em)"
+    )
+);
+
+@mixin renderGridStyles($settings){
+  [str-row] {
+    margin-right: map-get($settings, "margin") * -1;
+    margin-left: map-get($settings, "margin") * -1;
+  }
+  $breakpoints: map-get($settings, "breakpoints");
+  @include renderColumns("xs", $settings);
+  @include renderOffsets("xs", $settings);
+  @each $key, $breakpoint in $breakpoints {
+    @include media($breakpoint) {
+      @include renderColumns($key, $settings);
+      @include renderOffsets($key, $settings);
+    }
+  }
+}
+
+@mixin renderColumns($key, $settings) {
+  $i: 1;
+  @while $i <= map-get($settings, "columns") {
+    [str-#{$key}='#{$i}'] {
+      float: left;
+      width: 100% * $i / map-get($settings,"columns");
+    }
+    $i: $i+1;
+  }
+}
+
+@mixin renderOffsets($key, $settings) {
+  $i: 1;
+  @while $i < map-get($settings, "columns") {
+    [str-#{$key}-offset='#{$i}'] {
+      margin-left: 100% * $i / map-get($settings,"columns");
+    }
+    $i: $i+1;
+  }
+}
+
+@mixin media($queryString){
+    @media #{$queryString} {
+      @content;
+    }
+}
+
+@include renderGridStyles($settings);
