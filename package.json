@@ -1,6 +1,6 @@
 {
   "name": "structure-grid",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Declarative grid framework",
   "main": "structure.css",
   "scripts": {
